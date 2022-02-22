@@ -20,23 +20,34 @@ const App = () => {
 
   useEffect(()=>{
     getQuote();
-  },[])
+  },[]);
+
+  async function getImage(){
+    let number = Math.random() * images.length;
+    console.log(number.toFixed(0)-1);
+    return(images[number.toFixed(0)-1]);
+  }
 
   const getQuote = async () => {
     let quoteList = [];
+    
     for(let i =0;i<10;i++){
+      let quotePackage = {};
       const response = await fetch("https://api.kanye.rest");
       const data = await response.json();
-      quoteList[i] = data.quote;
+      const image = await getImage();
+      quotePackage["quote"] = data.quote;
+      quotePackage["image"] = image;
+      quoteList[i] = quotePackage;
     }
-    console.log(quotes);
+    console.log(quoteList);
     setQuotes(quoteList);
     
   }
   return (
     <div className="App">
-      {quotes.map(quote => (
-        <Quote saying={quote}/>
+      {quotes.map(kanye =>(
+        <Quote saying={kanye.quote} image={kanye.image}/>
       ))}
     </div>
   );

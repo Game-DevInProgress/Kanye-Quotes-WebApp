@@ -1,9 +1,9 @@
 import React from "react";
 
-const Quote = ({saying}) => {
+const Quote = ({saying,image}) => {
     return(
         <div>
-            <img src="" alt="Picture Source Not Found"/>
+            <img src={image} alt="Picture Source Not Found"/>
             <h1>{saying}</h1>
         </div>
     );
