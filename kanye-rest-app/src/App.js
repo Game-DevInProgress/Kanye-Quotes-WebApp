@@ -1,25 +1,33 @@
-import logo from './logo.svg';
+import React,{useEffect, useState} from "react";
 import './App.css';
 
-function App() {
+const App = () => {
+
+  const [quotes,setQuotes] = useState([]);
+
+  useEffect(()=>{
+    getQuote();
+  },[])
+
+  const getQuote = async () => {
+    let quoteList = [];
+    for(let i =0;i<10;i++){
+      const response = await fetch("https://api.kanye.rest");
+      const data = await response.json();
+      quoteList[i] = data.quote;
+    }
+    console.log(quotes);
+    setQuotes(quoteList);
+    
+  }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {quotes.map(quote => (
+        <p>"{quote}"</p>
+      ))}
     </div>
   );
+  
 }
 
 export default App;
