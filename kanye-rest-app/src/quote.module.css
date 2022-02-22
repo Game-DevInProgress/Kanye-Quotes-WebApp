@@ -1,0 +1,24 @@
+.image{
+    padding-top: 10px;
+    border-radius: 20%;
+    width: 200px;
+    height: 200px;
+}
+
+.quote{
+    padding: 5%;
+}
+
+.box{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 5px solid rgb(0, 0, 0);
+    border-radius: 5%;
+    width:850px;
+    height: 500px;
+    margin-bottom: 20px;
+    box-shadow: 10px 10px grey;
+    background-color: lightblue;
+}

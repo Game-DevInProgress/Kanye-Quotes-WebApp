@@ -1,10 +1,11 @@
 import React from "react";
+import style from "./quote.module.css";
 
 const Quote = ({saying,image}) => {
     return(
-        <div>
-            <img src={image} alt="Picture Source Not Found"/>
-            <h1>{saying}</h1>
+        <div className={style.box}>
+            <img className={style.image} src={image} alt="Picture Source Not Found"/>
+            <h3 className={style.quote}>-"{saying}"</h3>
         </div>
     );
 };
